@@ -6,8 +6,10 @@
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <style>
       .message { font-size: 1.3em; font-weight: bold; }
-      .good { color: green; border: 1px solid green;}
-      .bad { color: red; border: 1px solid red;}
+      .message.good { color: green;}
+      .message.bad { color: red;}
+      #lunch-menu.good {border: 1px solid green;}
+      #lunch-menu.bad {border: 1px solid red;}
     </style>
   </head>
 <body ng-app="LunchCheck">
@@ -17,7 +19,7 @@
          <div class="form-group">
              <input id="lunch-menu" type="text"
              placeholder="list comma separated dishes you usually have for lunch"
-             class="form-control" ng-model="vm.lunch" ng-change="vm.clearMessage()">
+             class="form-control" ng-model="vm.lunch" ng-change="vm.clearMessage()" ng-class="{'good': vm.good_flag == true, 'bad': vm.good_flag == false}">
          </div>
          <span>NOT considering an empty item, i.e., , , as an item towards to the count</span>
          <div class="form-group">
